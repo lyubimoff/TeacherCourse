@@ -1,8 +1,8 @@
 import pandas as pd
 from docxtpl import DocxTemplate
 
-file = r'D:\Dev\PythonProjects\TeacherCourse\mdl_course.csv'
-doc = DocxTemplate(r'D:\Dev\PythonProjects\TeacherCourse\Crt_tmplt_pythn.docx')
+file = r"D:\Dev\PythonProjects\TeacherCourse\mdl_course.csv"
+doc = DocxTemplate(r"D:\Dev\PythonProjects\TeacherCourse\Crt_tmplt_pythn.docx")
 headers = ['fullname', 'lastname', 'firstname', 'middlename', 'grade', 'sex', 'email']
 myCSV = pd.read_csv(file, sep=';')
 df = pd.DataFrame(index=range(0, len(myCSV)), columns=headers)
@@ -25,8 +25,8 @@ for i in range(len(contexts)):
 
     '''
 wdFormatPDF = 17
-in_folder = r'D:\Dev\TeacherCourse\Certificates\\'
-out_folder = r'D:\Dev\TeacherCourse\PdfCertificates\\'
+in_folder = r"D:\Dev\TeacherCourse\Certificates\\"
+out_folder = r"D:\Dev\TeacherCourse\PdfCertificates\\"
 
 for in_file_name in os.listdir(in_folder):
     print(in_file_name)
