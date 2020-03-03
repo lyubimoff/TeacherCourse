@@ -1,28 +1,28 @@
 import pandas as pd
-from transliterate import translit
 from docxtpl import DocxTemplate
-import os
-import comtypes.client
 
 file = r'D:\Dev\PythonProjects\TeacherCourse\mdl_course.csv'
 doc = DocxTemplate(r'D:\Dev\PythonProjects\TeacherCourse\Crt_tmplt_pythn.docx')
-headers = ['fullname','lastname','firstname','middlename','grade','sex','email']
+headers = ['fullname', 'lastname', 'firstname', 'middlename', 'grade', 'sex', 'email']
 myCSV = pd.read_csv(file, sep=';')
 df = pd.DataFrame(index=range(0, len(myCSV)), columns=headers)
 contexts = []
 
 for row in myCSV.values:
-    
+
     if row[5] == "M":
         create = "разработал"
     else:
         create = "разработала"
-    contexts.append({'author': row[1]+" "+row[2]+" "+row[3], 'course': row[0], 'grade': row[4], 'create': create, 'email': row[6]})
+    contexts.append(
+        {'author': row[1] + " " + row[2] + " " + row[3], 'course': row[0], 'grade': row[4], 'create': create,
+         'email': row[6]})
 
-for i in range (len(contexts)):
+for i in range(len(contexts)):
     print(contexts[i])
     doc.render(contexts[i])
-    doc.save(r'D:\Dev\PythonProjects\TeacherCourse\certificates\\'+contexts[i]["author"]+".docx")
+    doc.save(r'D:\Dev\PythonProjects\TeacherCourse\certificates\\' + contexts[i]["author"] + ".docx")
+
     '''
 wdFormatPDF = 17
 in_folder = r'D:\Dev\TeacherCourse\Certificates\\'
